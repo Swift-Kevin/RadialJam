@@ -28,8 +28,8 @@ public class RadialMenu : MonoBehaviour
     [Seperator]
     public List<SegmentInfo> segmentInfos = new List<SegmentInfo>();
 
-    [Range(1, 25), SerializeField, Tooltip("Number of Segments to display.")]
-    private int numSegments = 1;
+/*    [Range(1, 25), SerializeField, Tooltip("Number of Segments to display.")]
+    private int numSegments = 1;*/
     [SerializeField, Range(0f, 360f), Tooltip("Total arc to spread all segments across (e.g. 360 = full circle).")]
     private float totalArcAngle = 360f;
     [SerializeField, Range(0f, 360f), Tooltip("Where the radial menu starts (0 = top, 90 = right, 180 = bottom, etc.).")]
