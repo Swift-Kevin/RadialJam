@@ -5,7 +5,25 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    private void Awake()
+    [SerializeField] private ClickerManager clickerMan;
+	public ClickerManager Clicker
+    {
+        get
+        {
+            return clickerMan;
+        }
+    }
+	[SerializeField] private UpgradeManager upgradeMan;
+	public UpgradeManager Upgrade
+	{
+		get
+		{
+			return upgradeMan;
+		}
+	}
+
+
+	private void Awake()
     {
         Instance = this;
     }
@@ -22,4 +40,7 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+
+
 }

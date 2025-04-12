@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7120556379874067895}
   - component: {fileID: 2624385907831418689}
+  - component: {fileID: 2880186099071518375}
+  - component: {fileID: 3753005944835277392}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -42,5 +44,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d3a7b9ac1883da4ebb8f097fc2c1c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickerMan: {fileID: 2880186099071518375}
+  upgradeMan: {fileID: 3753005944835277392}
+--- !u!114 &2880186099071518375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653870069755491781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f225f953a9cc6a24c99531dc5cd8d292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  clickerButton: {fileID: 0}
+  curData: {fileID: 11400000, guid: ad336421064280a4eaca35c436d67ea0, type: 2}
+--- !u!114 &3753005944835277392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653870069755491781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf32cf7dcbe427e4b922c8da79a52cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
