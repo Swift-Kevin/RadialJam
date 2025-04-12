@@ -1,30 +1,51 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
+[Serializable]
+public struct SegmentInfo
+{
+    public Color startColor;
+    public Color endColor;
+
+    [Seperator]
+    [Range(5f, 500f)]
+    public float ringThickness;
+    [Range(3, 128)]
+    public int numTris;
+
+    [Seperator]
+    public EventTrigger.TriggerEvent customCallback;
+}
 
 public class RadialMenu : MonoBehaviour
 {
     public Camera menuCamera;
     public RadialInputs inputs;
+    public GameObject prefabSegment;
 
-    [Range(0, 50)]
-    public int segmentCount = 10;
+    [Seperator]
+    public List<SegmentInfo> segmentInfos = new List<SegmentInfo>();
+
+    [Range(1, 25), SerializeField, Tooltip("Number of Segments to display.")]
+    private int numSegments = 1;
+    [SerializeField, Range(0f, 360f), Tooltip("Total arc to spread all segments across (e.g. 360 = full circle).")]
+    private float totalArcAngle = 360f;
+    [SerializeField, Range(0f, 360f), Tooltip("Where the radial menu starts (0 = top, 90 = right, 180 = bottom, etc.).")]
+    private float startAngle = 0f;
+    private List<RadialSegment> segments = new List<RadialSegment>();
 
     private void Awake()
     {
         inputs = new RadialInputs();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
         float angle = CalculateMouseAngle(menuCamera, Vector2.up);
-        Debug.Log($"Mouse Angle: {angle}");
-        //Debug.Log($"Mouse Position: {Input.mousePosition}");
+        //Debug.Log($"Mouse Angle: {angle}");
     }
 
     //returns the angle
@@ -48,6 +69,71 @@ public class RadialMenu : MonoBehaviour
         float angleDegrees = Mathf.Rad2Deg * Mathf.Acos(val);
 
         return (crossProduct.z < 0) ? (180 - angleDegrees) + 180 : angleDegrees;
+
+    }
+
+    private void Start()
+    {
+        if (Application.isPlaying)
+        {
+            for (int i = 0; i < segments.Count; i++)
+            {
+                Destroy(segments[i].gameObject);
+            }
+            segments.Clear();
+
+            for (int i = 0; i < segmentInfos.Count; i++)
+            {
+                RadialSegment comp = Instantiate(prefabSegment, transform).GetComponent<RadialSegment>();
+
+                comp.UpdateSegmentInfo(segmentInfos[i]);
+
+                segments.Add(comp);
+            }
+            UpdateSegments();
+        }
+    }
+
+    //private void OnValidate()
+    //{
+    //    if (Application.isPlaying)
+    //    {
+    //        Debug.Log("TEST");
+    //        for (int i = 0; i < segments.Count; i++)
+    //        {
+    //            segments[i].UpdateSegmentInfo(segmentInfos[i]);
+    //        }
+    //    }
+    //}
+
+    private void Reset()
+    {
+        Debug.Log("Reset Called");
+        segments.Clear();
+        segments.AddRange(GetComponentsInChildren<RadialSegment>());
+        UpdateSegments();
+    }
+
+    public void UpdateSegments()
+    {
+        if (segments == null || segments.Count == 0)
+            return;
+
+        float anglePerSegment = totalArcAngle / segments.Count;
+
+        for (int i = 0; i < segments.Count; i++)
+        {
+            var segment = segments[i];
+            if (segment == null) continue;
+
+            segment.SetArcAngle(anglePerSegment);
+            segment.SetStartAngle(startAngle + i * anglePerSegment);
+            segment.SetVerticesDirty();
+        }
+    }
+
+    public void InspectorButton(bool v)
+    {
 
     }
 }
