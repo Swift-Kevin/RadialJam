@@ -38,13 +38,11 @@ public class RadialMenu : MonoBehaviour
 
         Vector2 mouseVecRelToSliderCenterVec = mousePosition;//Convert to a vector 2
 
-
         Vector3 crossProduct = Vector3.Cross(mouseVecRelToSliderCenterVec, menuStartDir);
         float dotProduct = Vector2.Dot(menuStartDir, mouseVecRelToSliderCenterVec);
 
         float startDirMag = menuStartDir.magnitude;
         float mouseVecMag = mouseVecRelToSliderCenterVec.magnitude;
-
 
         float val = dotProduct / (startDirMag * mouseVecMag);
         float angleDegrees = Mathf.Rad2Deg * Mathf.Acos(val);

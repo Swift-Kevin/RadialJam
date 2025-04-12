@@ -10,7 +10,7 @@ public class RadialSegmentEditor : Editor
 
         RadialSegment _script = target as RadialSegment;
 
-        if (GUILayout.Button("Test Button"))
+        if (GUILayout.Button("Inspector Debug"))
         {
             _script.InspectorButton();
         }
