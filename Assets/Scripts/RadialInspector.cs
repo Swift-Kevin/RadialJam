@@ -18,3 +18,21 @@ public class RadialSegmentEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+
+[CustomEditor(typeof(RadialMenu))]
+public class RadialMenuEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        RadialMenu _script = target as RadialMenu;
+
+        //if (GUILayout.Button("Add Segment"))
+        //{
+        //    _script.InspectorButton(true);
+        //}
+
+        serializedObject.ApplyModifiedProperties();
+    }
+}
