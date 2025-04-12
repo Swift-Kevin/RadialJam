@@ -10,9 +10,11 @@ public class ClickerManager : MonoBehaviour
 
 	public SaveData curData;
 
+	public RadialSegment clickerSegment;
+
 	private void Awake()
 	{
-		
+
 	}
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,9 +41,21 @@ public class ClickerManager : MonoBehaviour
 
 	public void ClickerClick()
 	{
-		curData.score++;
+		clickerButton.interactable = false;
 
-		UpdateScore();
+		StartCoroutine(Timer.Countdown(1, ScoreRoutine));
+	}
+
+	public void ScoreRoutine(CountdownStatus status)
+	{
+
+
+		if(status.isDone)
+		{
+			curData.score++;
+			UpdateScore();
+			clickerButton.interactable = true;
+		}
 	}
 
 	public void UpdateScore()
