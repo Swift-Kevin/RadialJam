@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class RadialMenu : MonoBehaviour
 {
     public Camera menuCamera;
     public RadialInputs inputs;
 
+    [Range(0, 50)]
     public int segmentCount = 10;
 
     private void Awake()
