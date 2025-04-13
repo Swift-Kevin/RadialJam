@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 9065630309575786795}
   - component: {fileID: 4121822293270343679}
   - component: {fileID: 1211803653891470568}
+  - component: {fileID: 8903247664951964268}
   m_Layer: 5
   m_Name: Radial_Upgrades
   m_TagString: Untagged
@@ -129,10 +130,10 @@ MonoBehaviour:
   menuCamera: {fileID: 0}
   prefabSegment: {fileID: 650994227300074984, guid: b1712aea9abff354b854036b82fceefd, type: 3}
   segmentInfos:
-  - startColor: {r: 0.6226415, g: 0.5152053, b: 0, a: 1}
+  - startColor: {r: 1, g: 0, b: 0, a: 1}
     endColor: {r: 0.62352943, g: 0.5137255, b: 0, a: 1}
-    ringThickness: 150
-    numTris: 16
+    ringThickness: 500
+    numTris: 128
     initialFill: 1
     customCallback:
       m_PersistentCalls:
@@ -150,29 +151,9 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - startColor: {r: 0.6603774, g: 0, b: 0.056914296, a: 1}
-    endColor: {r: 0.6627451, g: 0, b: 0.05882353, a: 1}
-    ringThickness: 150
-    numTris: 16
-    initialFill: 1
-    customCallback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 4121822293270343679}
-          m_TargetAssemblyTypeName: UpgradeAutomation, Assembly-CSharp
-          m_MethodName: Interact
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - startColor: {r: 0, g: 0.21924089, b: 0.56078434, a: 1}
-    endColor: {r: 0, g: 0.21960784, b: 0.56078434, a: 1}
-    ringThickness: 150
-    numTris: 16
+    endColor: {r: 0, g: 0.04445052, b: 1, a: 1}
+    ringThickness: 500
+    numTris: 128
     initialFill: 1
     customCallback:
       m_PersistentCalls:
@@ -189,8 +170,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  totalArcAngle: 100
-  startAngle: 130
+  totalArcAngle: 180
+  startAngle: 90
 --- !u!114 &9065630309575786795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +208,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff300b6be299074ba57796e737623b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8903247664951964268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668715229097408175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec081b82ba93dc4eb181c0824e3f447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5127536192117936738
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +234,7 @@ GameObject:
   - component: {fileID: 239512742793916604}
   - component: {fileID: 6179071661165530660}
   - component: {fileID: 6709915902000960200}
+  - component: {fileID: 1659719226216443389}
   m_Layer: 5
   m_Name: Radial_Game
   m_TagString: Untagged
@@ -353,16 +347,40 @@ MonoBehaviour:
   menuCamera: {fileID: 0}
   prefabSegment: {fileID: 650994227300074984, guid: b1712aea9abff354b854036b82fceefd, type: 3}
   segmentInfos:
-  - startColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+  - startColor: {r: 1, g: 1, b: 1, a: 1}
     endColor: {r: 0.7798742, g: 0.7798742, b: 0.7798742, a: 1}
-    ringThickness: 188
-    numTris: 47
-    initialFill: 0
+    ringThickness: 500
+    numTris: 128
+    initialFill: 1
     customCallback:
       m_PersistentCalls:
-        m_Calls: []
-  totalArcAngle: 260
-  startAngle: 230
+        m_Calls:
+        - m_Target: {fileID: 1659719226216443389}
+          m_TargetAssemblyTypeName: ClickerInteraction, Assembly-CSharp
+          m_MethodName: Interact
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  totalArcAngle: 180
+  startAngle: 270
+--- !u!114 &1659719226216443389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5127536192117936738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8640766bffc77e4dba8073a5244b0f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6764787773191407993
 GameObject:
   m_ObjectHideFlags: 0

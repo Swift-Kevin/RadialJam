@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TestingData
   m_EditorClassIdentifier: 
   clickerData:
-    score: 1945971
+    score: 0
   upgradeData:
-    productionTier: 100
-    speedTier: 10
+    productionTier: 1
+    speedTier: 1
     automationTier: 1
     autoSpeedTier: 1

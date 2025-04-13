@@ -63,6 +63,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   clickerButton: {fileID: 0}
   curData: {fileID: 11400000, guid: ad336421064280a4eaca35c436d67ea0, type: 2}
+  radial: {fileID: 0}
 --- !u!114 &3753005944835277392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,3 +76,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf32cf7dcbe427e4b922c8da79a52cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curData: {fileID: 11400000, guid: ad336421064280a4eaca35c436d67ea0, type: 2}

@@ -3,8 +3,11 @@ using UnityEngine;
 public class UpgradeManager : MonoBehaviour
 {
 
-	public SaveData curData;
-
+	[SerializeField]private SaveData curData;
+	private const int clickProductionLimit = 100;
+	private const int clickDelayLimit = 10;
+	private const int autoProductionLimit = 10;
+	private const int autoDelayLimit = 10;
 	public long ClickProduce
 	{
 		get
@@ -92,6 +95,35 @@ public class UpgradeManager : MonoBehaviour
     {
         
     }
+
+	public void UpgradeClickProduction()
+	{
+		if(++curData.upgradeData.productionTier > clickProductionLimit)
+		{
+			curData.upgradeData.productionTier = clickProductionLimit;
+		}
+	}
+	public void UpgradeClickDelay()
+	{
+		if(++curData.upgradeData.speedTier > clickDelayLimit)
+		{
+			curData.upgradeData.speedTier = clickDelayLimit;
+		}
+	}
+	public void UpgradeAutoProduction()
+	{
+		if(++curData.upgradeData.automationTier > autoProductionLimit)
+		{
+			curData.upgradeData.automationTier = autoProductionLimit;
+		}
+	}
+	public void UpgradeAutoDelay()
+	{
+		if(++curData.upgradeData.autoSpeedTier > autoDelayLimit)
+		{
+			curData.upgradeData.autoSpeedTier = autoDelayLimit;
+		}
+	}
 }
 
 [System.Serializable]

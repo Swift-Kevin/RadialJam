@@ -6,15 +6,17 @@ public class ClickerManager : MonoBehaviour
 {
 
     public TMP_Text scoreText;
-    public Button clickerButton;
 
-	public SaveData curData;
+	[SerializeField]private SaveData curData;
 
 	public RadialMenu radial;
 	private RadialSegment clickerSegment;
 
+	private bool isClicking;
+
 	private void Awake()
 	{
+		isClicking = false;
 	}
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,22 +34,21 @@ public class ClickerManager : MonoBehaviour
 
 	private void OnEnable()
 	{
-		clickerButton.onClick.AddListener(ClickerClick);
 	}
 
 	private void OnDisable()
 	{
-		clickerButton.onClick.RemoveListener(ClickerClick);
 	}
 
 	public void ClickerClick()
 	{
-		clickerButton.interactable = false;
+		if(isClicking) return;
+		isClicking = true;
 
 		StartCoroutine(Timer.Countdown(GameManager.Instance.Upgrade.ClickDelay, ScoreRoutine));
 	}
 
-	public void ScoreRoutine(CountdownStatus status)
+	private void ScoreRoutine(CountdownStatus status)
 	{
 		clickerSegment.SetFill(status.progress);
 
@@ -55,7 +56,7 @@ public class ClickerManager : MonoBehaviour
 		{
 			curData.clickerData.score += GameManager.Instance.Upgrade.ClickProduce;
 			UpdateScore();
-			clickerButton.interactable = true;
+			isClicking = false;
 		}
 	}
 
