@@ -80,10 +80,17 @@ public class RadialSegment : Graphic
         ringThickness = _info.ringThickness;
         endColor = _info.endColor;
         startColor = _info.startColor;
+        fillPercent = _info.initialFill;
     }
 
     public void SetStartAngle(float _angle)
     {
         startAngle = _angle;
     }
+
+	public void SetFill(float _fill)
+	{
+		fillPercent = _fill;
+		SetVerticesDirty();
+	}
 }

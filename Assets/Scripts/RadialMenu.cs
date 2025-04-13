@@ -14,8 +14,10 @@ public struct SegmentInfo
     public float ringThickness;
     [Range(3, 128)]
     public int numTris;
+	[Range(0f, 1f)]
+	public float initialFill;
 
-    [Seperator]
+	[Seperator]
     public EventTrigger.TriggerEvent customCallback;
 }
 
@@ -36,10 +38,21 @@ public class RadialMenu : MonoBehaviour
     private float startAngle = 0f;
     private List<RadialSegment> segments = new List<RadialSegment>();
 
-    private void Awake()
+    public List<RadialSegment> Segments
+    {
+        get
+        {
+            return segments;
+        }
+    }
+
+	private void Awake()
     {
         inputs = new RadialInputs();
-    }
+
+
+		CreateSegments();
+	}
 
     // Update is called once per frame
     void Update()
@@ -74,25 +87,30 @@ public class RadialMenu : MonoBehaviour
 
     private void Start()
     {
-        if (Application.isPlaying)
-        {
-            for (int i = 0; i < segments.Count; i++)
-            {
-                Destroy(segments[i].gameObject);
-            }
-            segments.Clear();
 
-            for (int i = 0; i < segmentInfos.Count; i++)
-            {
-                RadialSegment comp = Instantiate(prefabSegment, transform).GetComponent<RadialSegment>();
+	}
 
-                comp.UpdateSegmentInfo(segmentInfos[i]);
+    private void CreateSegments()
+    {
+		if(Application.isPlaying)
+		{
+			for(int i = 0; i < segments.Count; i++)
+			{
+				Destroy(segments[i].gameObject);
+			}
+			segments.Clear();
 
-                segments.Add(comp);
-            }
-            UpdateSegments();
-        }
-    }
+			for(int i = 0; i < segmentInfos.Count; i++)
+			{
+				RadialSegment comp = Instantiate(prefabSegment, transform).GetComponent<RadialSegment>();
+
+				comp.UpdateSegmentInfo(segmentInfos[i]);
+
+				segments.Add(comp);
+			}
+			UpdateSegments();
+		}
+	}
 
     //private void OnValidate()
     //{

@@ -10,17 +10,18 @@ public class ClickerManager : MonoBehaviour
 
 	public SaveData curData;
 
-	public RadialSegment clickerSegment;
+	public RadialMenu radial;
+	private RadialSegment clickerSegment;
 
 	private void Awake()
 	{
-
 	}
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
     {
 		UpdateScore();
+		clickerSegment = radial.Segments[0];
 	}
 
     // Update is called once per frame
@@ -48,7 +49,7 @@ public class ClickerManager : MonoBehaviour
 
 	public void ScoreRoutine(CountdownStatus status)
 	{
-
+		clickerSegment.SetFill(status.progress);
 
 		if(status.isDone)
 		{
