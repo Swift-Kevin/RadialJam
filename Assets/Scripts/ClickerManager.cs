@@ -45,7 +45,7 @@ public class ClickerManager : MonoBehaviour
 		if(isClicking) return;
 		isClicking = true;
 
-		StartCoroutine(Timer.Countdown(GameManager.Instance.Upgrade.ClickDelay, ScoreRoutine));
+		StartCoroutine(Timer.Countdown(GameManager.Instance.Upgrade.ClickDelay.value, ScoreRoutine));
 	}
 
 	private void ScoreRoutine(CountdownStatus status)
@@ -54,7 +54,7 @@ public class ClickerManager : MonoBehaviour
 
 		if(status.isDone)
 		{
-			curData.clickerData.score += GameManager.Instance.Upgrade.ClickProduce;
+			curData.clickerData.score += GameManager.Instance.Upgrade.ClickProduce.value;
 			UpdateScore();
 			isClicking = false;
 		}
