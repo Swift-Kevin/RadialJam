@@ -802,6 +802,10 @@ PrefabInstance:
       propertyPath: clickerButton
       value: 
       objectReference: {fileID: 345779270}
+    - target: {fileID: 3753005944835277392, guid: f34275c188132e84d901beddeb05730a, type: 3}
+      propertyPath: curData
+      value: 
+      objectReference: {fileID: 11400000, guid: ad336421064280a4eaca35c436d67ea0, type: 2}
     - target: {fileID: 7120556379874067895, guid: f34275c188132e84d901beddeb05730a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

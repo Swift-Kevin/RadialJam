@@ -44,7 +44,7 @@ public class ClickerManager : MonoBehaviour
 	{
 		clickerButton.interactable = false;
 
-		StartCoroutine(Timer.Countdown(1, ScoreRoutine));
+		StartCoroutine(Timer.Countdown(GameManager.Instance.Upgrade.ClickDelay, ScoreRoutine));
 	}
 
 	public void ScoreRoutine(CountdownStatus status)
@@ -53,7 +53,7 @@ public class ClickerManager : MonoBehaviour
 
 		if(status.isDone)
 		{
-			curData.score++;
+			curData.clickerData.score += GameManager.Instance.Upgrade.ClickProduce;
 			UpdateScore();
 			clickerButton.interactable = true;
 		}
@@ -61,6 +61,17 @@ public class ClickerManager : MonoBehaviour
 
 	public void UpdateScore()
 	{
-		scoreText.text = $"{curData.score}";
+		scoreText.text = $"{curData.clickerData.score}";
 	}
+}
+
+[System.Serializable]
+public struct ClickerData
+{
+	public long score;
+}
+
+public struct ClickerInt
+{
+
 }
