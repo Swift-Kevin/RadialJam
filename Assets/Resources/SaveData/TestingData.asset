@@ -15,7 +15,7 @@ MonoBehaviour:
   clickerData:
     score: 0
   upgradeData:
-    productionTier: 1
-    speedTier: 1
+    productionTier: 0
+    speedTier: 0
     automationTier: 1
     autoSpeedTier: 1

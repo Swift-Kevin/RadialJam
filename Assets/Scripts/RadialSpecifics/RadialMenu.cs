@@ -1,13 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
-using static UnityEngine.Rendering.HableCurve;
 
 [Serializable]
 public struct SegmentInfo
@@ -25,6 +19,9 @@ public struct SegmentInfo
 
     [Seperator]
     public UnityEvent customCallback;
+
+    [Seperator]
+    public Sprite overlaySprite;
 }
 
 public class RadialMenu : MonoBehaviour

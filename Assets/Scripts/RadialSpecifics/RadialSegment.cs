@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.HableCurve;
 
 [RequireComponent(typeof(CanvasRenderer))]
 public class RadialSegment : Graphic
@@ -28,6 +27,7 @@ public class RadialSegment : Graphic
     public float OuterRadius => Mathf.Min(rectHandle.width, rectHandle.height) * 0.5f;
     public float InnerRadius => OuterRadius - ringThickness;
 
+    public Image overlayImageComponent;
 
     protected override void Start()
     {
@@ -99,6 +99,9 @@ public class RadialSegment : Graphic
         endColor = _info.endColor;
         startColor = _info.startColor;
         fillPercent = _info.initialFill;
+
+        overlayImageComponent.sprite = _info.overlaySprite;
+
         SetVerticesDirty();
     }
 
