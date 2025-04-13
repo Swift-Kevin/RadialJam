@@ -154,4 +154,12 @@ public class RadialMenu : MonoBehaviour
     {
 
     }
+
+    public void UpdateSegmentsInfo()
+    {
+        for (int i = 0; i < segments.Count; i++)
+        {
+            segments[i].UpdateSegmentInfo(segmentInfos[i]);
+        }
+    }
 }

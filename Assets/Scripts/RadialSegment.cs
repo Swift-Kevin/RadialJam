@@ -81,6 +81,7 @@ public class RadialSegment : Graphic
         endColor = _info.endColor;
         startColor = _info.startColor;
         fillPercent = _info.initialFill;
+        SetVerticesDirty();
     }
 
     public void SetStartAngle(float _angle)

@@ -33,6 +33,8 @@ public class RadialMenuEditor : Editor
         //    _script.InspectorButton(true);
         //}
 
+        _script.UpdateSegmentsInfo();
+
         serializedObject.ApplyModifiedProperties();
     }
 }
