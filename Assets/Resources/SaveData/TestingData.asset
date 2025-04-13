@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d600c54186dde474995762112b3ca323, type: 3}
   m_Name: TestingData
   m_EditorClassIdentifier: 
+  clickerData:
+    score: 1945971
+  upgradeData:
+    productionTier: 100
+    speedTier: 10
+    automationTier: 1
+    autoSpeedTier: 1
