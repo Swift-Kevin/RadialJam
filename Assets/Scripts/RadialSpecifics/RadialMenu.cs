@@ -1,7 +1,13 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+using static UnityEngine.Rendering.HableCurve;
 
 [Serializable]
 public struct SegmentInfo
@@ -14,11 +20,11 @@ public struct SegmentInfo
     public float ringThickness;
     [Range(3, 128)]
     public int numTris;
-	[Range(0f, 1f)]
-	public float initialFill;
+    [Range(0f, 1f)]
+    public float initialFill;
 
-	[Seperator]
-    public EventTrigger.TriggerEvent customCallback;
+    [Seperator]
+    public UnityEvent customCallback;
 }
 
 public class RadialMenu : MonoBehaviour
@@ -30,35 +36,68 @@ public class RadialMenu : MonoBehaviour
     [Seperator]
     public List<SegmentInfo> segmentInfos = new List<SegmentInfo>();
 
-/*    [Range(1, 25), SerializeField, Tooltip("Number of Segments to display.")]
-    private int numSegments = 1;*/
     [SerializeField, Range(0f, 360f), Tooltip("Total arc to spread all segments across (e.g. 360 = full circle).")]
     private float totalArcAngle = 360f;
     [SerializeField, Range(0f, 360f), Tooltip("Where the radial menu starts (0 = top, 90 = right, 180 = bottom, etc.).")]
     private float startAngle = 0f;
     private List<RadialSegment> segments = new List<RadialSegment>();
 
-    public List<RadialSegment> Segments
-    {
-        get
-        {
-            return segments;
-        }
-    }
+    public List<RadialSegment> Segments => segments;
+    private Vector2 center = new Vector2(Screen.width / 2f, Screen.height / 2f);
 
-	private void Awake()
+    private void Awake()
     {
         inputs = new RadialInputs();
 
-
-		CreateSegments();
-	}
+        CreateSegments();
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            for (int i = 0; i < segments.Count; i++)
+            {
+                if (ClickCheck(segments[i]))
+                {
+                    segmentInfos[i].customCallback?.Invoke();
+                    Debug.Log("HIT");
+                }
+
+            }
+        }
+    }
+
+    bool ClickCheck(RadialSegment _segment)
+    {
         float angle = CalculateMouseAngle(menuCamera, Vector2.up);
-        //Debug.Log($"Mouse Angle: {angle}");
+        float distance = Vector2.Distance(center, Input.mousePosition);
+        bool inRangeAngle = IsAngleInRange(angle, _segment.StartAngle, _segment.StartAngle + _segment.SegmentAngle);
+        bool inRangePosition = distance > _segment.InnerRadius && distance < _segment.OuterRadius;
+
+        return inRangeAngle && inRangePosition;
+    }
+
+    bool IsAngleInRange(float angle, float _entry, float _exit)
+    {
+        angle = NormalizeAngle(angle);
+        _entry = NormalizeAngle(_entry);
+        _exit = NormalizeAngle(_exit);
+
+        if (_entry < _exit)
+        {
+            return angle >= _entry && angle <= _exit;
+        }
+        else
+        {
+            return angle >= _entry || angle <= _exit;
+        }
+    }
+    float NormalizeAngle(float angle)
+    {
+        angle %= 360f;
+        return angle < 0 ? angle + 360f : angle;
     }
 
     //returns the angle
@@ -85,44 +124,27 @@ public class RadialMenu : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-
-	}
-
     private void CreateSegments()
     {
-		if(Application.isPlaying)
-		{
-			for(int i = 0; i < segments.Count; i++)
-			{
-				Destroy(segments[i].gameObject);
-			}
-			segments.Clear();
+        if (Application.isPlaying)
+        {
+            for (int i = 0; i < segments.Count; i++)
+            {
+                Destroy(segments[i].gameObject);
+            }
+            segments.Clear();
 
-			for(int i = 0; i < segmentInfos.Count; i++)
-			{
-				RadialSegment comp = Instantiate(prefabSegment, transform).GetComponent<RadialSegment>();
+            for (int i = 0; i < segmentInfos.Count; i++)
+            {
+                RadialSegment comp = Instantiate(prefabSegment, transform).GetComponent<RadialSegment>();
 
-				comp.UpdateSegmentInfo(segmentInfos[i]);
+                comp.UpdateSegmentInfo(segmentInfos[i]);
 
-				segments.Add(comp);
-			}
-			UpdateSegments();
-		}
-	}
-
-    //private void OnValidate()
-    //{
-    //    if (Application.isPlaying)
-    //    {
-    //        Debug.Log("TEST");
-    //        for (int i = 0; i < segments.Count; i++)
-    //        {
-    //            segments[i].UpdateSegmentInfo(segmentInfos[i]);
-    //        }
-    //    }
-    //}
+                segments.Add(comp);
+            }
+            UpdateSegments();
+        }
+    }
 
     private void Reset()
     {

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.HableCurve;
 
 [RequireComponent(typeof(CanvasRenderer))]
 public class RadialSegment : Graphic
@@ -15,6 +16,23 @@ public class RadialSegment : Graphic
     private float ringThickness = 40f;
     private float segmentAngle = 360f;
     private float startAngle = 0f;
+
+    public float SegmentAngle => segmentAngle;
+    public float StartAngle => startAngle;
+    public float Thickness => ringThickness;
+
+    // other info needed elsewhere
+    private Rect rectHandle;
+    public Rect RectHandle => rectHandle;
+
+    public float OuterRadius => Mathf.Min(rectHandle.width, rectHandle.height) * 0.5f;
+    public float InnerRadius => OuterRadius - ringThickness;
+
+
+    protected override void Start()
+    {
+        rectHandle = GetComponent<RectTransform>().rect;
+    }
 
     // Functions Below
     public void InspectorButton()

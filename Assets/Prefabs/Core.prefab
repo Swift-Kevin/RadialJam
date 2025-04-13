@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 7264511770912554242}
   - component: {fileID: 8555313192751243231}
   - component: {fileID: 3837225960880370153}
+  - component: {fileID: 9065630309575786795}
+  - component: {fileID: 4121822293270343679}
+  - component: {fileID: 1211803653891470568}
   m_Layer: 5
   m_Name: Radial_Upgrades
   m_TagString: Untagged
@@ -125,9 +128,105 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuCamera: {fileID: 0}
   prefabSegment: {fileID: 650994227300074984, guid: b1712aea9abff354b854036b82fceefd, type: 3}
-  numSegments: 3
+  segmentInfos:
+  - startColor: {r: 0.6226415, g: 0.5152053, b: 0, a: 1}
+    endColor: {r: 0.62352943, g: 0.5137255, b: 0, a: 1}
+    ringThickness: 150
+    numTris: 16
+    initialFill: 1
+    customCallback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 9065630309575786795}
+          m_TargetAssemblyTypeName: UpgradeSpeed, Assembly-CSharp
+          m_MethodName: Interact
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - startColor: {r: 0.6603774, g: 0, b: 0.056914296, a: 1}
+    endColor: {r: 0.6627451, g: 0, b: 0.05882353, a: 1}
+    ringThickness: 150
+    numTris: 16
+    initialFill: 1
+    customCallback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4121822293270343679}
+          m_TargetAssemblyTypeName: UpgradeAutomation, Assembly-CSharp
+          m_MethodName: Interact
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - startColor: {r: 0, g: 0.21924089, b: 0.56078434, a: 1}
+    endColor: {r: 0, g: 0.21960784, b: 0.56078434, a: 1}
+    ringThickness: 150
+    numTris: 16
+    initialFill: 1
+    customCallback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1211803653891470568}
+          m_TargetAssemblyTypeName: UpgradeAmount, Assembly-CSharp
+          m_MethodName: Interact
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   totalArcAngle: 100
   startAngle: 130
+--- !u!114 &9065630309575786795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668715229097408175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9b04512cd9fdc45b8494b099472114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4121822293270343679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668715229097408175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b49de562a9edac84d9114097f0153f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1211803653891470568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668715229097408175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff300b6be299074ba57796e737623b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5127536192117936738
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +352,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuCamera: {fileID: 0}
   prefabSegment: {fileID: 650994227300074984, guid: b1712aea9abff354b854036b82fceefd, type: 3}
-  numSegments: 1
+  segmentInfos:
+  - startColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+    endColor: {r: 0.7798742, g: 0.7798742, b: 0.7798742, a: 1}
+    ringThickness: 188
+    numTris: 47
+    initialFill: 0
+    customCallback:
+      m_PersistentCalls:
+        m_Calls: []
   totalArcAngle: 260
   startAngle: 230
 --- !u!1 &6764787773191407993
