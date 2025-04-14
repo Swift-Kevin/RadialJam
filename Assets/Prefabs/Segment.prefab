@@ -64,7 +64,7 @@ MonoBehaviour:
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   fillPercent: 1
   overlayImageComponent: {fileID: 6812339425398693243}
-  spriteLabel: {fileID: 9038817842982768419}
+  costLabel: {fileID: 0}
 --- !u!1 &3737761767662022181
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +82,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6729363327726158535
 RectTransform:
   m_ObjectHideFlags: 0

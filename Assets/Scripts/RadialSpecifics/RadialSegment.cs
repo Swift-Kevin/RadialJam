@@ -24,7 +24,7 @@ public class RadialSegment : Graphic
     public float InnerRadius => segmentInfo.innerRadius;
 
     public Image overlayImageComponent;
-    public TextMeshProUGUI spriteLabel;
+    public TextMeshProUGUI costLabel;
     
 
     private float rectSize;

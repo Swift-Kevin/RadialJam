@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -29,6 +31,10 @@ public class UIManager : MonoBehaviour
     public Image fadeCurtain;
     public float fadeTime = 2.5f;
     public AnimationCurve curve;
+
+
+    [Seperator]
+    public Dictionary<string, TextMeshProUGUI> upgradeValues;
 
     private void Start()
     {

@@ -25,6 +25,9 @@ public struct SegmentInfo
     public Sprite overlaySprite;
     [Range(-250f, 250f)]
     public float spriteOffset;
+
+    [Seperator]
+    public string mapKey;
 }
 
 public class RadialMenu : MonoBehaviour
@@ -141,6 +144,9 @@ public class RadialMenu : MonoBehaviour
 
             comp.SetSprite(segmentInfos[i].overlaySprite);
             comp.UpdateSegmentInfo(segmentInfos[i]);
+
+            if (comp.costLabel != null)
+            UIManager.Instance.upgradeValues.Add(segmentInfos[i].mapKey, comp.costLabel);
 
             segments.Add(comp);
         }

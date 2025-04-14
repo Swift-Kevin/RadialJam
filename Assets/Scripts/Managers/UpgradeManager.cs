@@ -167,18 +167,22 @@ public class UpgradeManager : MonoBehaviour
 		if (_amtValue > -1)
 		{
 			amtValue.text = _amtValue.ToString();
+			//UIManager.Instance.upgradeValues["Amount"].text = ClickProduce.cost.ToString();
 		}
         if (_rateValue > -1)
         {
             rateValue.text = _rateValue.ToString();
+			//UIManager.Instance.upgradeValues["Rate"].text = ClickDelay.cost.ToString();
         }
         if (_autoAmt > -1)
         {
             autoAmtValue.text = _autoAmt.ToString();
+			//UIManager.Instance.upgradeValues["AutoAmount"].text = AutoProduce.cost.ToString();
         }
         if (_autoRate > -1)
         {
             autoRateValue.text = _autoRate.ToString();
+			//UIManager.Instance.upgradeValues["AutoRate"].text = AutoDelay.cost.ToString();
         }
     }
 
