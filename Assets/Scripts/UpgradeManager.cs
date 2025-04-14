@@ -4,9 +4,12 @@ using System.Data;
 
 public class UpgradeManager : MonoBehaviour
 {
-	public TMP_Text statusText;
+    public TextMeshProUGUI amtValue;
+    public TextMeshProUGUI rateValue;
+    public TextMeshProUGUI autoAmtValue;
+    public TextMeshProUGUI autoRateValue;
 
-	[SerializeField]private SaveData curData;
+    [SerializeField]private SaveData curData;
 	private const int clickProductionLimit = 100;
 	private const int clickDelayLimit = 10;
 	private const int autoProductionLimit = 10;
@@ -157,12 +160,27 @@ public class UpgradeManager : MonoBehaviour
         
     }
 
-	public void UpdateStatus()
+	public void UpdateStatus(float _amtValue = -1, float _rateValue = -1, float _autoAmt = -1, float _autoRate = -1)
 	{
-		string newText = $"Produce Speed\n{curData.upgradeData.productionTier} {curData.upgradeData.speedTier}\n{ClickProduce.value} {ClickDelay.value}\n{ClickProduce.cost} {ClickDelay.cost}";
-
-		statusText.text = newText;
-	}
+		//string newText = $"Produce Speed\n{curData.upgradeData.productionTier} {curData.upgradeData.speedTier}\n{ClickProduce.value} {ClickDelay.value}\n{ClickProduce.cost} {ClickDelay.cost}";
+		//statusText.text = newText;
+		if (_amtValue > -1)
+		{
+			amtValue.text = _amtValue.ToString();
+		}
+        if (_rateValue > -1)
+        {
+            rateValue.text = _rateValue.ToString();
+        }
+        if (_autoAmt > -1)
+        {
+            autoAmtValue.text = _autoAmt.ToString();
+        }
+        if (_autoRate > -1)
+        {
+            autoRateValue.text = _autoRate.ToString();
+        }
+    }
 
 	public void UpgradeClickProduction()
 	{
@@ -175,7 +193,7 @@ public class UpgradeManager : MonoBehaviour
 			curData.upgradeData.productionTier = clickProductionLimit;
 		}
 
-		UpdateStatus();
+		UpdateStatus(_amtValue: curData.upgradeData.productionTier);
 	}
 	public void UpgradeClickDelay()
 	{
@@ -188,7 +206,7 @@ public class UpgradeManager : MonoBehaviour
 			curData.upgradeData.speedTier = clickDelayLimit;
 		}
 
-		UpdateStatus();
+		UpdateStatus(_rateValue: curData.upgradeData.speedTier);
 	}
 	public void UpgradeAutoProduction()
 	{
@@ -201,7 +219,7 @@ public class UpgradeManager : MonoBehaviour
 			curData.upgradeData.automationTier = autoProductionLimit;
 		}
 
-		UpdateStatus();
+		UpdateStatus(_autoAmt: curData.upgradeData.automationTier);
 	}
 	public void UpgradeAutoDelay()
 	{
@@ -214,7 +232,7 @@ public class UpgradeManager : MonoBehaviour
 			curData.upgradeData.autoSpeedTier = autoDelayLimit;
 		}
 
-		UpdateStatus();
+		UpdateStatus(_autoRate: curData.upgradeData.autoSpeedTier);
 	}
 }
 
