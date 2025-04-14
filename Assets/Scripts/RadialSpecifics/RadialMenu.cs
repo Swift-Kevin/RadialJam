@@ -26,7 +26,7 @@ public struct SegmentInfo
 
 public class RadialMenu : MonoBehaviour
 {
-    public Camera menuCamera;
+    Camera menuCamera;
     public RadialInputs inputs;
     public GameObject prefabSegment;
 
@@ -45,11 +45,15 @@ public class RadialMenu : MonoBehaviour
     private void Awake()
     {
         inputs = new RadialInputs();
-
         CreateSegments();
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        menuCamera = GameManager.Instance.GameCamera;
+        UpdateSegments();
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -59,9 +63,7 @@ public class RadialMenu : MonoBehaviour
                 if (ClickCheck(segments[i]))
                 {
                     segmentInfos[i].customCallback?.Invoke();
-                    Debug.Log("HIT");
                 }
-
             }
         }
     }
@@ -91,6 +93,7 @@ public class RadialMenu : MonoBehaviour
             return angle >= _entry || angle <= _exit;
         }
     }
+
     float NormalizeAngle(float angle)
     {
         angle %= 360f;
@@ -123,29 +126,25 @@ public class RadialMenu : MonoBehaviour
 
     private void CreateSegments()
     {
-        if (Application.isPlaying)
+        for (int i = 0; i < segments.Count; i++)
         {
-            for (int i = 0; i < segments.Count; i++)
-            {
-                Destroy(segments[i].gameObject);
-            }
-            segments.Clear();
+            Destroy(segments[i].gameObject);
+        }
+        segments.Clear();
 
-            for (int i = 0; i < segmentInfos.Count; i++)
-            {
-                RadialSegment comp = Instantiate(prefabSegment, transform).GetComponent<RadialSegment>();
+        for (int i = 0; i < segmentInfos.Count; i++)
+        {
+            RadialSegment comp = Instantiate(prefabSegment, transform).GetComponent<RadialSegment>();
 
-                comp.UpdateSegmentInfo(segmentInfos[i]);
+            comp.SetSprite(segmentInfos[i].overlaySprite);
+            comp.UpdateSegmentInfo(segmentInfos[i]);
 
-                segments.Add(comp);
-            }
-            UpdateSegments();
+            segments.Add(comp);
         }
     }
 
     private void Reset()
     {
-        Debug.Log("Reset Called");
         segments.Clear();
         segments.AddRange(GetComponentsInChildren<RadialSegment>());
         UpdateSegments();
@@ -165,6 +164,7 @@ public class RadialMenu : MonoBehaviour
 
             segment.SetArcAngle(anglePerSegment);
             segment.SetStartAngle(startAngle + i * anglePerSegment);
+            segment.UpdateSpritePosition();
             segment.SetVerticesDirty();
         }
     }

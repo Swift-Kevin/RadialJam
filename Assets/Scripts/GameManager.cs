@@ -1,8 +1,12 @@
 
+using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [HideInInspector]
+    public Camera GameCamera;
+
     public static GameManager Instance { get; private set; }
 
     [SerializeField] private ClickerManager clickerMan;
@@ -13,7 +17,8 @@ public class GameManager : MonoBehaviour
             return clickerMan;
         }
     }
-	[SerializeField] private UpgradeManager upgradeMan;
+
+    [SerializeField] private UpgradeManager upgradeMan;
 	public UpgradeManager Upgrade
 	{
 		get
@@ -22,25 +27,9 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-
 	private void Awake()
     {
         Instance = this;
+        GameCamera = Camera.main;
     }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
-
 }

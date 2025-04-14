@@ -20,7 +20,6 @@ public class RadialSegment : Graphic
     public float StartAngle => startAngle;
     public float Thickness => ringThickness;
 
-    // other info needed elsewhere
     private Rect rectHandle;
     public Rect RectHandle => rectHandle;
 
@@ -29,20 +28,16 @@ public class RadialSegment : Graphic
 
     public Image overlayImageComponent;
 
+    private float rectSize;
+    private bool updateRectSize = true;
+
     protected override void Start()
     {
         rectHandle = GetComponent<RectTransform>().rect;
     }
 
-    // Functions Below
-    public void InspectorButton()
-    {
-        SetVerticesDirty();
-    }
-
     protected override void OnPopulateMesh(VertexHelper _vh)
     {
-        Debug.Log("test");
         base.OnPopulateMesh(_vh);
         _vh.Clear(); // clear the vertex helper
 
@@ -63,7 +58,7 @@ public class RadialSegment : Graphic
         int stepsToDraw = Mathf.CeilToInt(numTris * fillPercent) + 1;
         int offset = 0;
 
-        for(int i = 0; i < stepsToDraw; i++)
+        for (int i = 0; i < stepsToDraw; i++)
         {
             float angle = angleOffsetRad + i * angleStep;
             float percent = (float)i / (stepsToDraw - 1);
@@ -77,7 +72,7 @@ public class RadialSegment : Graphic
             // top right corner
             vertex.position = new Vector2(Mathf.Sin(angle) * radius, Mathf.Cos(angle) * radius) + center;
             _vh.AddVert(vertex);
-            
+
             offset = i * 2;
             if (i < stepsToDraw - 1)
             {
@@ -85,6 +80,8 @@ public class RadialSegment : Graphic
                 _vh.AddTriangle(offset + 3, offset + 2, offset + 0);
             }
         }
+
+        UpdateSpritePosition();
     }
 
     public void SetArcAngle(float _segmentAngle)
@@ -100,8 +97,6 @@ public class RadialSegment : Graphic
         startColor = _info.startColor;
         fillPercent = _info.initialFill;
 
-        overlayImageComponent.sprite = _info.overlaySprite;
-
         SetVerticesDirty();
     }
 
@@ -110,9 +105,44 @@ public class RadialSegment : Graphic
         startAngle = _angle;
     }
 
-	public void SetFill(float _fill)
-	{
-		fillPercent = _fill;
-		SetVerticesDirty();
-	}
+    public void SetFill(float _fill)
+    {
+        fillPercent = _fill;
+
+        SetVerticesDirty();
+    }
+
+    public void SetSprite(Sprite _sprite)
+    {
+        overlayImageComponent.sprite = _sprite;
+
+        if (_sprite == null)
+        {
+            overlayImageComponent.gameObject.SetActive(false);
+        }
+    }
+
+    public void UpdateSpritePosition()
+    {
+        // Set position of component so its in segment
+        float desiredAngle = (segmentAngle * 0.5f) + startAngle;
+        float desiredDistance = OuterRadius - (InnerRadius * 0.5f);
+        rectSize = desiredDistance * 0.5f;
+
+        float x = Mathf.Sin(desiredAngle * Mathf.Deg2Rad) * desiredDistance;
+        float y = Mathf.Cos(desiredAngle * Mathf.Deg2Rad) * desiredDistance;
+
+        overlayImageComponent.rectTransform.localPosition = new Vector2(x, y);
+        updateRectSize = true;
+    }
+
+    private void LateUpdate()
+    {
+        if (updateRectSize)
+        {
+            overlayImageComponent.rectTransform.sizeDelta = new Vector2(rectSize, rectSize); 
+            updateRectSize = false;
+        }
+    }
+
 }
