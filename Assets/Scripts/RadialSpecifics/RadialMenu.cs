@@ -1,17 +1,19 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
 public struct SegmentInfo
 {
-    public Color startColor;
-    public Color endColor;
+    public Gradient colors;
 
     [Seperator]
     [Range(5f, 500f)]
-    public float ringThickness;
+    public float innerRadius;
+    [Range(5f, 500f)]
+    public float outerRadius;
     [Range(3, 128)]
     public int numTris;
     [Range(0f, 1f)]
@@ -22,6 +24,8 @@ public struct SegmentInfo
 
     [Seperator]
     public Sprite overlaySprite;
+    [Range(-250f, 250f)]
+    public float spriteOffset;
 }
 
 public class RadialMenu : MonoBehaviour
@@ -171,7 +175,7 @@ public class RadialMenu : MonoBehaviour
 
     public void InspectorButton(bool v)
     {
-
+        UpdateSegmentsInfo();
     }
 
     public void UpdateSegmentsInfo()

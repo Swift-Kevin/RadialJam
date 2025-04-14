@@ -27,7 +27,7 @@ public class RadialMenuEditor : Editor
 
         RadialMenu _script = target as RadialMenu;
 
-        if (GUILayout.Button("Add Segment"))
+        if (GUILayout.Button("Refresh"))
         {
             _script.InspectorButton(true);
         }

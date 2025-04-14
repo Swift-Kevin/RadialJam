@@ -97,7 +97,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3668715229097408175}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!222 &8555313192751243231
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -129,9 +129,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabSegment: {fileID: 650994227300074984, guid: b1712aea9abff354b854036b82fceefd, type: 3}
   segmentInfos:
-  - startColor: {r: 0, g: 0.54219246, b: 1, a: 1}
-    endColor: {r: 0, g: 0.5411765, b: 1, a: 1}
-    ringThickness: 250
+  - colors:
+      serializedVersion: 2
+      key0: {r: 0.22352941, g: 0.22352941, b: 0.22352941, a: 1}
+      key1: {r: 0, g: 0, b: 0, a: 1}
+      key2: {r: 0.22012573, g: 0.22012573, b: 0.22012573, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 32768
+      ctime2: 65535
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: 0
+      m_NumColorKeys: 3
+      m_NumAlphaKeys: 2
+    innerRadius: 250
+    outerRadius: 450
     numTris: 32
     initialFill: 1
     customCallback:
@@ -150,9 +179,39 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     overlaySprite: {fileID: 21300000, guid: 6a2ec65fcb8677045947b76ec121b5b9, type: 3}
-  - startColor: {r: 0.6603774, g: 0, b: 0.056914296, a: 1}
-    endColor: {r: 0.65882355, g: 0, b: 0.058823533, a: 1}
-    ringThickness: 250
+    spriteOffset: 0
+  - colors:
+      serializedVersion: 2
+      key0: {r: 0.22352941, g: 0.22352941, b: 0.22352941, a: 1}
+      key1: {r: 0, g: 0, b: 0, a: 1}
+      key2: {r: 0.22012573, g: 0.22012573, b: 0.22012573, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 32768
+      ctime2: 65535
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: 0
+      m_NumColorKeys: 3
+      m_NumAlphaKeys: 2
+    innerRadius: 250
+    outerRadius: 450
     numTris: 32
     initialFill: 1
     customCallback:
@@ -171,6 +230,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     overlaySprite: {fileID: 21300000, guid: b22e0635b0e827b4fb4e4b69a30f6f1d, type: 3}
+    spriteOffset: 0
   totalArcAngle: 180
   startAngle: 90
 --- !u!114 &9065630309575786795
@@ -315,7 +375,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5127536192117936738}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -324,7 +384,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!222 &6179071661165530660
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -347,9 +407,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabSegment: {fileID: 650994227300074984, guid: b1712aea9abff354b854036b82fceefd, type: 3}
   segmentInfos:
-  - startColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
-    endColor: {r: 0.50980395, g: 0.50980395, b: 0.50980395, a: 1}
-    ringThickness: 250
+  - colors:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 0.57232696, g: 0.57232696, b: 0.57232696, a: 1}
+      key2: {r: 1, g: 1, b: 1, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 32768
+      ctime2: 65535
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: 0
+      m_NumColorKeys: 3
+      m_NumAlphaKeys: 2
+    innerRadius: 250
+    outerRadius: 450
     numTris: 128
     initialFill: 1
     customCallback:
@@ -368,6 +457,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     overlaySprite: {fileID: 0}
+    spriteOffset: 0
   totalArcAngle: 180
   startAngle: 270
 --- !u!114 &1659719226216443389
@@ -377,6 +467,185 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5127536192117936738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8640766bffc77e4dba8073a5244b0f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6281435871683068445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6696340195790760503}
+  - component: {fileID: 6879304189330916206}
+  - component: {fileID: 7476484022450214598}
+  - component: {fileID: 3023110596601102129}
+  - component: {fileID: 7096579930401592887}
+  - component: {fileID: 7441187324929739420}
+  - component: {fileID: 7711227625944636050}
+  m_Layer: 5
+  m_Name: Radial_Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6696340195790760503
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281435871683068445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7577515278394445319}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!223 &6879304189330916206
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281435871683068445}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &7476484022450214598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281435871683068445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!114 &3023110596601102129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281435871683068445}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!222 &7096579930401592887
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281435871683068445}
+  m_CullTransparentMesh: 1
+--- !u!114 &7441187324929739420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281435871683068445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544f638c9eddeaa4a83f5f8afd32478a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSegment: {fileID: 650994227300074984, guid: b1712aea9abff354b854036b82fceefd, type: 3}
+  segmentInfos:
+  - colors:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    innerRadius: 450
+    outerRadius: 500
+    numTris: 64
+    initialFill: 1
+    customCallback:
+      m_PersistentCalls:
+        m_Calls: []
+    overlaySprite: {fileID: 0}
+    spriteOffset: 0
+  totalArcAngle: 360
+  startAngle: 270
+--- !u!114 &7711227625944636050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281435871683068445}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8640766bffc77e4dba8073a5244b0f0, type: 3}
@@ -413,5 +682,6 @@ Transform:
   m_Children:
   - {fileID: 6074669650035656868}
   - {fileID: 9057761031787105330}
+  - {fileID: 6696340195790760503}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
